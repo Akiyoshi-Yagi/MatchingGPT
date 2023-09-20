@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f7f7f7;
+            font-family: 'Arial', sans-serif;
+        }
+        .btn-primary {
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+        }
+        .btn-primary:active {
+            transform: translateY(0);
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        .card {
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>自己紹介ジェネレータ</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">自己紹介ジェネレータ <i class="fas fa-user"></i></h1>
+
+    <form action="" method="post" class="mb-4">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="user_input">自己紹介の特徴を入力:</label>
+            <textarea name="user_input" class="form-control" id="user_input" rows="4" placeholder="例: 積極的, チームプレイヤー, コーディング好き..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">生成 <i class="fas fa-arrow-right"></i></button>
+    </form>
+
+    <div class="card">
+        <div class="card-header">
+            <h2>生成された自己紹介文</h2>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{ intro_text }}</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
